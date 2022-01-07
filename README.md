@@ -2,6 +2,17 @@
 > Blue Cosmo | 01/07/2022
 ---
 
+```
+      ::::::::  ::::    ::: :::     :::   ::: :::::::::      ::: ::::::::::: 
+    :+:    :+: :+:+:   :+: :+:     :+:   :+: :+:    :+:   :+: :+:   :+:      
+   +:+    +:+ :+:+:+  +:+ +:+      +:+ +:+  +:+    +:+  +:+   +:+  +:+       
+  +#+    +:+ +#+ +:+ +#+ +#+       +#++:   +#++:++#:  +#++:++#++: +#+        
+ +#+    +#+ +#+  +#+#+# +#+        +#+    +#+    +#+ +#+     +#+ +#+         
+#+#    #+# #+#   #+#+# #+#        #+#    #+#    #+# #+#     #+# #+#          
+########  ###    #### ########## ###    ###    ### ###     ### ###          
+```
+
+
 ## Overview:
 We are developing a Remote Access Tool [RAT]. We can use this to command and control [C2] target computers.
 
@@ -28,6 +39,9 @@ We are developing a Remote Access Tool [RAT]. We can use this to command and con
 
 ## Roadmap:
 - redevelop keylogger
+- screenshots
+- webcam
+- obtaining credential
 - obfuscation
 	- av, vm detection
 	- disabling firewall, av
@@ -36,5 +50,3 @@ We are developing a Remote Access Tool [RAT]. We can use this to command and con
 - bsod
 - web history
 - user activity
-
-#projects #malware 
