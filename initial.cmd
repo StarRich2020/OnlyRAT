@@ -17,5 +17,5 @@ powershell powershell.exe -windowstyle hidden  "Invoke-WebRequest -Uri raw.githu
 powershell ./wget.cmd
 
 @REM cd back into intial location
-cd "%INITIALPATH%"
+@REM cd "%INITIALPATH%"
 @REM del initial.cmd

