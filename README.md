@@ -62,8 +62,11 @@ Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\C
 - custom uploads
 
 ## Roadmap:
-- run installer with adminpriv
-	- wget `powershell ...` to disasble uac
+- establish attacker console
+	- python
+- send commands back and forth
+	- taget pc to host socket
+- have rat create backdoor
 - vbs special folders
 - redevelop keylogger
 - screenshots
